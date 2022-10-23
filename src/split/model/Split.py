@@ -35,9 +35,9 @@ class Split:
 
     @classmethod
     def platform(cls):
-        platforms = pygame.sprite.Group()
-        platforms.add()
+        pass
             # IMPLEMENT COLLISION WITH OBJECTS
+
     # Used by GUI
 
     @classmethod

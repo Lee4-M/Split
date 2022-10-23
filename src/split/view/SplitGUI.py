@@ -37,15 +37,17 @@ class SplitGUI:
 
         p1, p2 = Split.get_players()
         if p1 is not None:
-            rect_p1 = pygame.Rect(p1.get_x(), p1.get_y(), p1.get_width(), p1.get_height())
-            player1 = pygame.draw.rect(cls.screen, WHITE, rect_p1)
+            player1 = pygame.Rect(p1.get_x(), p1.get_y(), p1.get_width(), p1.get_height())
+            pygame.draw.rect(cls.screen, WHITE, player1)
+            return player1
 
         if p2 is not None:
             player2 = pygame.Rect(p2.get_x(), p2.get_y(), p2.get_width(), p2.get_height())
             pygame.draw.rect(cls.screen, WHITE, player2)
+            return player2
 
         pygame.display.flip()
-        return platform_ground, player1, player2
+        return platform_ground
 
     @classmethod
     def key_pressed(cls, event):
@@ -81,14 +83,7 @@ class SplitGUI:
 
     @classmethod
     def update(cls):
-        collide1 = pygame.Rect.colliderect(cls.render()[0], cls.render()[1])
-        collide2 = pygame.Rect.colliderect(cls.render()[0], cls.render()[2])
-        p1, p2 = Split.get_players()
-        print(collide1, collide2)
-        if collide1:
-            cls.render()[1].bottom = cls.render()[0].top
-        if collide2:
-            cls.render()[2].bottom = cls.render()[0].top
+        collide1 = pygame.Rect.colliderect(cls.render()[0], cls.render()[2])
 
 if __name__ == "__main__":
     SplitGUI.run()
